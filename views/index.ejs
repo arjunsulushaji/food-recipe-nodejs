@@ -20,59 +20,29 @@
 <!-- Category Start -->
 <div class="row row-cols-2 row-cols-lg-6 g2 g-lg-3 py-4">
 
-    <a href="" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe1.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            American Food
-        </div>
-    </a>
+    <% if(categories !='' ) { %>
+        <% categories.forEach(function(category,index) { %>
+            <a href="/categories/<%- category.name%>" class="text-center category__link ">
+                <div class="category__img shadow">
+                    <img src="/images/<%- category.image%>" alt="Cooking - blog with Node.js" loading="lazy">
+                </div>
+                <div class="pt-1">
+                    <%- category.name%>
+                </div>
+            </a>
+        <% }) %>
+    <% } %>
 
-    <a href="" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe1.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            American Food
-        </div>
-    </a>
 
-    <a href="" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe1.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            American Food
-        </div>
-    </a>
 
-    <a href="" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe1.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            American Food
-        </div>
-    </a>
-
-    <a href="" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe1.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            American Food
-        </div>
-    </a>
-
-    <a href="/categories" class="text-center category__link ">
-        <div class="category__img shadow">
-            <img src="/images/recipe2.jpg" alt="Cooking - blog with Node.js" loading="lazy">
-        </div>
-        <div class="pt-1">
-            View all
-        </div>
-    </a>
+                    <a href="/categories" class="text-center category__link ">
+                        <div class="category__img shadow">
+                            <img src="/images/recipe2.jpg" alt="Cooking - blog with Node.js" loading="lazy">
+                        </div>
+                        <div class="pt-1">
+                            View all
+                        </div>
+                    </a>
 
 </div>
 <!-- Category End -->
