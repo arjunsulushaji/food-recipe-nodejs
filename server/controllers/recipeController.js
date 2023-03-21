@@ -19,7 +19,7 @@ exports.homepage = async (req, res) => {
         const chinese = await Recipe.find({ 'category': 'Chinese' }).limit(limitNumber);
 
         const food = { recipes, thai, american, chinese }
-        console.log(food)
+        // console.log(food)
 
         res.render('index', { title: 'Cooking blog - Homepage', categories, food })
     } catch (error) {
@@ -33,16 +33,61 @@ exports.homepage = async (req, res) => {
  */
 exports.exploreCategories = async (req, res) => {
     try {
-
         const limitNumber = 20;
         const categories = await Category.find({}).limit(limitNumber)
         // console.log(categories);
-
         res.render('categories', { title: 'Cooking blog - Categories', categories })
     } catch (error) {
         res.status(500).send({ message: error.message || "error occured" })
     }
 }
+
+/**
+ * GET / Recipe/:id
+ * Recipe
+ */
+exports.exploreRecipe = async (req, res) => {
+    try {
+        let recipeId = req.params.id;
+        const recipe = await Recipe.findById(recipeId);
+
+        res.render('recipe', { title: 'Cooking blog - Recipe', recipe })
+    } catch (error) {
+        res.status(500).send({ message: error.message || "error occured" })
+    }
+}
+
+/**
+ * GET / Categories/:id
+ * Categories By Id
+ */
+exports.exploreCategoriesById = async (req, res) => {
+    try {
+        let categoryId = req.params.id;
+        const categoriesById = await Recipe.find({ 'category': categoryId })
+        res.render('categories', { title: 'Cooking blog - Categories', categoriesById })
+    } catch (error) {
+        res.status(500).send({ message: error.message || "error occured" })
+    }
+}
+
+/**
+ * POST /search
+ * Search
+ */
+exports.searchRecipe = async (req, res) => {
+    //searchTerm
+    try {
+        let searchTerm = req.body.searchTerm
+        let recipe = await Recipe.find({ $text: { $search: searchTerm, $diacriticSensitive: true } })
+        //res.json(recipe)
+        res.render('search', { title: 'Cooking Blog - Search', recipe })
+    } catch (error) {
+        res.status(500).send({ message: error.message || "error occured" })
+    }
+}
+
+
 
 // async function insertDummyRecipeData() {
 //     try {
