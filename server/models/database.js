@@ -21,3 +21,4 @@ module.exports.get = () => {
 }
 
 require('./Category')
+require('./Recipe')
