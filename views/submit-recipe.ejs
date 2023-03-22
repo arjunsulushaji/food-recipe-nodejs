@@ -1,0 +1,84 @@
+<% if(infoSubmitObj !='' ) { %>
+    <div class="alert alert-success" role="alert">
+        <%=infoSubmitObj %>
+    </div>
+    <% } %>
+
+    <% if(infoErrorObj !='' ) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= infoErrorObj %>
+        </div>
+        <% } %>
+
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">
+        Submit Your Recipe
+    </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">
+            Share your amazing recipes with thousands of web developers accross the world. Fill out form to get started.
+        </p>
+    </div>
+</div>
+
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form action="/submit-recipe" enctype="multipart/form-data" method="post">
+                    <div class="row g-3">
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Recipe name</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Description</label>
+                            <textarea type="text" name="description" name="description" class="form-control" cols="30" rows="4"
+                                id="description"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="text" class="form-label">Ingredients</label>
+                            <small>Example: Ice,sugar....</small>
+                            <div class="ingredientList">
+                                <div class="ingredientDiv mb-1">
+                                    <input type="text" class="form-control" name="ingredients"  id="ingredients">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+
+                                Ingredients</button>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="category">Seletct Category</label>
+                            <select name="category" class="form-select form-control" id="" aria-label="category">
+                                <option selected>Select Category</option>
+                                <option value="Thai">Thai</option>
+                                <option value="American">American</option>
+                                <option value="Indian">Indian</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Mexican">Mexican</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="image">Prouct Image</label>
+                            <input type="file" class="form-control" name="images" accept="image/*" id="">
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary">Submit Recipe</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
